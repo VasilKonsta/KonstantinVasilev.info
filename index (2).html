@@ -1,0 +1,105 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Konstantin Vasilev Coaching: Transformational connection coaching to bridge spiritual awareness and modern life.">
+  <title>Konstantin Vasilev Coaching</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .animate-fade-in {
+      animation: fade-in 1s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-white flex items-center justify-center min-h-screen">
+  <div class="max-w-lg w-full mx-4 p-12 text-center space-y-8 animate-fade-in">
+    <!-- Upper Image -->
+    <img src="https://i.ibb.co/wXTv5Sp/konstantin-3.jpg" alt="Konstantin Vasilev, Transformational Connection Coach" class="w-56 h-56 rounded-full mx-auto border-2 border-gray-200 shadow-sm">
+
+    <!-- Header -->
+    <div>
+      <h1 class="text-4xl font-sans font-bold text-gray-900">Konstantin Vasilev</h1>
+      <p class="text-xl text-gray-700 mt-2">Transformational Connection Coach</p>
+    </div>
+
+    <!-- Bio -->
+    <div>
+      <p class="text-gray-700 leading-relaxed">
+        I guide souls to weave spiritual awareness into modern life, fostering wholeness. Through integration coaching, we explore daily challenges, uncover purpose, reflect on plant medicine journeys, or embrace what it means to be fully alive.
+      </p>
+    </div>
+
+    <!-- Lower Image -->
+    <img src="https://i.ibb.co/GfT2LwWf/konstantin.jpg" alt="Konstantin Vasilev in professional setting" class="w-full max-w-md mx-auto rounded-lg shadow-sm">
+
+    <!-- Contact -->
+    <div class="space-y-4">
+      <h2 class="text-xl font-sans font-semibold text-gray-900">Connect with Me</h2>
+      <div class="flex justify-center space-x-6">
+        <a href="https://t.me/+358440762349" target="_blank" class="text-gray-800 hover:text-green-500" aria-label="Contact via Telegram">
+          <i class="fab fa-telegram-plane text-2xl"></i>
+        </a>
+        <a href="https://wa.me/+358440762349" target="_blank" class="text-gray-800 hover:text-green-500" aria-label="Contact via WhatsApp">
+          <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+        <a href="mailto:konstantin.vasilev@hotmail.com" class="text-gray-800 hover:text-green-500" aria-label="Contact via Email">
+          <i class="fas fa-envelope text-2xl"></i>
+        </a>
+      </div>
+      <a href="https://calendly.com/konstantin_vasilev/discovery-call" target="_blank" class="inline-block border border-gray-300 text-gray-800 font-semibold py-2 px-6 rounded-lg hover:bg-green-50 hover:text-green-500">
+        Book a Discovery Call
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-gray-600 text-sm">
+      © 2025 Konstantin Vasilev Coaching. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>
