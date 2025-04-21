@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
         var gk_isXlsx = false;
         var gk_xlsxFileLookup = {};
@@ -44,6 +45,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life Coaching - Transformational Connection</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -51,38 +53,49 @@
         .header-bg {
             background-image: url('https://i.ibb.co/7x4W5cnx/73-A6126-resized.jpg');
             background-size: cover;
-            background-position: top;
+            background-position: up;
             height: 150vh;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
+            font-family: 'Georgia', serif;
         }
         .footer-bg {
-            background-image: url('https://i.ibb.co/RpkxGNLG/73-A6604-resized.jpg');
-            
+            background-image: url('https://i.ibb.co/r2qRV2t9/1.jpg');
             background-size: cover;
-            background-position: top;
+            background-position: up;
             height: 100vh;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
             color: white;
             text-align: center;
+            padding-bottom: 2rem;
+            font-family: 'Georgia', serif;
         }
         .section {
             padding: 4rem 2rem;
+        }
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .contact-icon {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 1rem;
         }
     </style>
 </head>
 <body>
     <!-- Header Section -->
-    <header class="header-bg">
+    <header id="home" class="header-bg">
         <div>
-            <h1 class="text-5xl font-bold">Transform Your Life</h1>
-            <p class="mt-4 text-xl">Life Coaching with a Transformational Connection Approach</p>
-            <a href="#about" class="mt-6 inline-block bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200">Discover How</a>
+            <!-- No button here as per request -->
         </div>
     </header>
 
@@ -93,15 +106,21 @@
             <li><a href="#about" class="hover:text-gray-300">About</a></li>
             <li><a href="#services" class="hover:text-gray-300">Services</a></li>
             <li><a href="#contact" class="hover:text-gray-300">Contact</a></li>
+            <li><a href="#booking" class="hover:text-gray-300">Booking</a></li>
         </ul>
     </nav>
 
     <!-- About Section -->
     <section id="about" class="section bg-gray-100">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-4">About Your Life Coach</h2>
+            <h2 class="text-3xl font-bold mb-4">About Your Transformational connection Coach</h2>
             <p class="text-lg">
-                As a dedicated life coach, I specialize in the Transformational Connection Approach, guiding you to unlock your potential through deep, meaningful connections with yourself and others. My mission is to empower you to create lasting change, align with your true purpose, and live a life of fulfillment.
+               I am Certified Transformational Connection Facilitator and Coach
+
+I offer integration coaching with the intention of bridging spiritual awareness with the modern world to create a sense of wholeness in everyday life. 
+
+In sessions, there is the opportunity to explore day-to-day obstacles or dive into deeper topics, such as finding a greater sense of purpose, reflecting on your plant medicine experiences, or simply uncovering what it means to be fully alive.
+
             </p>
         </div>
     </section>
@@ -135,17 +154,39 @@
                 Ready to transform your life? Reach out to schedule a consultation or learn more about my coaching services.
             </p>
             <div class="flex space-x-4">
-                <a href="mailto:your.email@example.com" class="text-blue-600 hover:underline">Email</a>
-                <a href="your-instagram-profile" class="text-blue-600 hover:underline">Instagram</a>
-                <a href="your-linkedin-profile" class="text-blue-600 hover:underline">LinkedIn</a>
+                <a href="mailto:konstantin.vasilev@hotmail.com" class="text-gray-800 hover:text-gray-600 contact-icon">
+                    <i class="fas fa-envelope text-2xl"></i>
+                </a>
+                <a href="https://t.me/+358440762349" class="text-gray-800 hover:text-gray-600 contact-icon">
+                    <i class="fab fa-telegram-plane text-2xl"></i>
+                </a>
+                <a href="https://wa.me/+358440762349" class="text-gray-800 hover:text-gray-600 contact-icon">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                </a>
+                <a href="https://m.me/your-facebook-id" class="text-gray-800 hover:text-gray-600 contact-icon">
+                    <i class="fab fa-facebook-messenger text-2xl"></i>
+                </a>
             </div>
         </div>
     </section>
 
+    <!-- Booking Section with Calendly Widget -->
+    <section id="booking" class="section">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-4">Book Your Discovery Call</h2>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/konstantin_vasilev/discovery-call?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+    </section>
+
+    <!-- Floating Button -->
+    <a href="#booking" class="floating-button bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 shadow-lg">Book a Free Discovery Call</a>
+
     <!-- Footer Section -->
     <footer class="footer-bg">
         <div>
-            <p class="text-lg">© 2025 Transformational Life Coaching. All rights reserved.</p>
+         
+            <p class="mt-4 text-lg">© 2025 Konstantin Coaching. All rights reserved.</p>
         </div>
     </footer>
 </body>
